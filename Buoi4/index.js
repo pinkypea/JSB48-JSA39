@@ -107,17 +107,23 @@ let element_by_tag = document.getElementsByTagName("p"); // lấy phần tử HT
 // Lấy phần tử HTML bằng querySelector
 let element = document.querySelector('.my-element');
 let element1 = document.querySelector('#my-element');
+// let container = document.querySelector(".container");
+
+// // Tạo 1 phần tử HTML mới
+// let new_element = document.createElement("div");
+
+// // Thêm div mới vào trong container bằng appendChild
+// container.appendChild(new_element);
+
+// // Thêm nội dung vào div mới bằng innerHTML
+// new_element.innerHTML = '<p>New content</p>';
+
+// // Đặt style cho div mới
+// new_element.style.border = "1px solid red";
+// new_element.style.padding = "10px";
+
 let container = document.querySelector(".container");
-
-// Tạo 1 phần tử HTML mới
-let new_element = document.createElement("div");
-
-// Thêm div mới vào trong container bằng appendChild
+new_element = document.createElement("div");
+new_element.classList.add("item");
 container.appendChild(new_element);
-
-// Thêm nội dung vào div mới bằng innerHTML
-new_element.innerHTML = '<p>New content</p>';
-
-// Đặt style cho div mới
-new_element.style.border = "1px solid red";
-new_element.style.padding = "10px";
+new_element.innerHTML = '<p>Đây là tiêu đề</p>';

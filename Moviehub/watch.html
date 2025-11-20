@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watch Movie | MindX Cinema</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="stylesheet" href="./styles/watch.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+      <div class="logo">Movie<span class="highlight">hub</span></div>
+      <div class="nav-actions">
+        <input type="text" id="search-input" placeholder="Search movies..." />
+        <button id="search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <div id="avatar-container">
+          <a href="./login.html"><i class="fa-solid fa-user-circle"></i></a>
+        </div>
+      </div>
+    </header>
+
+  <!-- MAIN -->
+  <main class="watch-container">
+    <div class="iframe-container">
+      <iframe id="movie-player" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="movie-info">
+      <h1 id="movie-title"></h1>
+      <p id="release-date"></p>
+      <p id="movie-description"></p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 MindX School</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="./scripts/config.js"></script>
+  <script src="./scripts/watch.js"></script>
+</body>
+</html>

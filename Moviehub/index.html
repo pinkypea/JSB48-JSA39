@@ -1,75 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MindX Cinema</title>
-  <link rel="icon" href="./assets/icon.png" type="image/x-icon" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="./styles/main.css" />
-  <link rel="stylesheet" href="./styles/home.css" />
-</head>
-<body>
-  <!-- ========== NAVBAR ========== -->
-  <header class="navbar">
-    <div class="logo">Movie<span class="highlight">hub</span> </div>
-    <div class="nav-actions">
-      <input type="text" id="search-input" placeholder="Search movies..." />
-      <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-      <div id="avatar-container">
-        <a href="./login.html"><i class="fa-solid fa-user-circle"></i></a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindX Cinema</title>
+    <link rel="icon" href="./assets/icon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/home.css" />
+  </head>
+  <body>
+    <!-- ========== NAVBAR ========== -->
+    <header class="navbar">
+      <div class="logo">Movie<span class="highlight">hub</span></div>
+      <div class="nav-actions">
+        <input type="text" id="search-input" placeholder="Search movies..." />
+        <button id="search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <div id="avatar-container">
+          <a href="./login.html"><i class="fa-solid fa-user-circle"></i></a>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- ========== WELCOME SECTION ========== -->
-  <section class="welcome-section">
-  <div class="welcome-content">
-    <h1 class="welcome-title">Welcome to MindX Cinema</h1>
-    <p class="welcome-subtitle">
-      Discover trending, popular, and top-rated movies — all in one place.
-    </p>
-    <button class="explore-btn" onclick="document.querySelector('.movie-list-section').scrollIntoView({ behavior: 'smooth' })">
-      Explore Movies
-    </button>
-  </div>
-</section>
+    <!-- ========== WELCOME SECTION ========== -->
+    <section class="welcome-section">
+      <div class="welcome-content">
+        <h1 class="welcome-title">Welcome to MindX Cinema</h1>
+        <p class="welcome-subtitle">
+          Discover trending, popular, and top-rated movies — all in one place.
+        </p>
+        <button
+          class="explore-btn"
+          onclick="document.querySelector('.movie-list-section').scrollIntoView({ behavior: 'smooth' })"
+        >
+          Explore Movies
+        </button>
+      </div>
+    </section>
 
-  <!-- ========== MOVIE LIST ========== -->
-  <main class="movie-list-section">
-  <div class="movie-category">
-    <h2>Trending Movies</h2>
-    <div id="trending"></div>
-  </div>
+    <!-- ========== MOVIE LIST ========== -->
+    <main class="movie-list-section">
+      <div class="movie-category">
+        <h2>Now Playing</h2>
+        <div class="movie-slider-container">
+          <button class="scroll-btn left">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div id="now-playing" class="movie-slider"></div>
+          <button class="scroll-btn right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
 
-  <div class="movie-category">
-    <h2>Popular Movies</h2>
-    <div id="popular"></div>
-  </div>
+      <div class="movie-category">
+        <h2>Popular Movies</h2>
+        <div class="movie-slider-container">
+          <button class="scroll-btn left">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div id="popular" class="movie-slider"></div>
+          <button class="scroll-btn right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
 
-  <div class="movie-category">
-    <h2>Top Rated</h2>
-    <div id="top-rated"></div>
-  </div>
+      <div class="movie-category">
+        <h2>Top Rated</h2>
+        <div class="movie-slider-container">
+          <button class="scroll-btn left">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div id="top-rated" class="movie-slider"></div>
+          <button class="scroll-btn right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
 
-  <div class="movie-category">
-    <h2>Now Playing</h2>
-    <div id="now-playing"></div>
-  </div>
-</main>
+      <div class="movie-category">
+        <h2>Upcoming Movies</h2>
+        <div class="movie-slider-container">
+          <button class="scroll-btn left">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div id="upcoming" class="movie-slider"></div>
+          <button class="scroll-btn right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      
+    </main>
 
-  <!-- ========== FOOTER ========== -->
-  <footer>
-    <p>&copy; 2025 MindX School</p>
-    <div class="footer-links">
-      <a href="#"><i class="fa-brands fa-github"></i></a>
-      <a href="#"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    </div>
-  </footer>
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <p>&copy; 2025 MindX School</p>
+      <div class="footer-links">
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </footer>
 
-  <!-- JS file để học sinh thực hành -->
-   <script src="./scripts/config.js"></script>
-  <script type="module" src="./scripts/home.js"></script>
-</body>
+    <!-- JS file để học sinh thực hành -->
+    <script src="./scripts/config.js"></script>
+    <script type="module" src="./scripts/home.js"></script>
+  </body>
 </html>

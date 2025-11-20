@@ -1,84 +1,227 @@
-main {
-  position: relative;
-  min-height: 100vh;
+/* =================== RESET =================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.background-img {
-  mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent);
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #0d0d0d;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* =================== NAVBAR =================== */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 40px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+}
+
+.highlight {
+  color: #e50914;
+}
+
+/* =================== MOVIE INFO SECTION =================== */
+
+/* =================== MOVIE INFO SECTION =================== */
+
+.info-container {
+  width: 100%;
+  padding: 30px 50px;
+  position: relative; /* cần cho overlay */
+  color: #fff; /* chữ nổi trên nền tối */
+  background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  width: 100vw;
-  height: 500px;
+  /* overflow: hidden; */
+}
+
+/* Overlay mờ */
+.info-container::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0.5;
-  display: block;
-  z-index: -1;
-  background-position: 50%;
+  /* width: 80%; */
+  /* height: 100%; */
+  background: rgba(0,0,0,0.5); /* mờ đen 50% */
+  z-index: 0;
 }
 
-.banner-container {
-  padding: 208px 80px 0 80px;
+/* Nội dung nằm lên trên overlay */
+.info-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.movie-info {
   display: flex;
-  gap: 20px;
-}
-
-.banner-preview-img-container {
-  width: 300px;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-}
-
-.banner-preview-img-container img {
+  gap: 40px;
+  margin-top: 20px;
+  align-items: flex-start;
+  position: relative;
   border-radius: 12px;
+  color: white;
+
+  /* Poster to làm nền */
+  
 }
 
-.banner-info-container {
+
+
+.poster img {
+  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.poster img:hover {
+  transform: scale(1.03);
+}
+
+.details {
+  max-width: 700px;
+}
+
+.details h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+#release-date {
+  opacity: 0.7;
+  margin-bottom: 15px;
+}
+
+#movie-description {
+  font-size: 16px;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+/* Genres */
+.genres {
   display: flex;
-  flex-direction: column;
-  justify-content: start;
-  gap: 12px;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
 }
 
-.casts-container {
-  margin-top: 80px;
-  padding: 0 80px;
+.genre-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid white;
+  border-radius: 16px;
+  margin-right: 8px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.genres span {
+  background: #1c1c1c;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: 1px solid #2c2c2c;
+}
+
+/* Watch Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #e50914;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.25s;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background: #b0060f;
+}
+
+
+/* =================== CAST =================== */
+
+.casts {
+  margin-top: 60px;
+}
+
+.casts h2,
+.similar h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .casts-grid {
   display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
 }
 
-.casts-grid > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
+.casts-grid .cast-card {
+  background: #111;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
-.casts-grid > div img {
+.cast-card img {
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
 }
 
-#genres {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+.cast-card p {
+  font-size: 14px;
+}
+/* =================== FOOTER =================== */
+
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-#genres span {
-  background: var(--dark-lighten);
-  border: 1px solid white;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  white-space: nowrap;
-}
+/* =================== RESPONSIVE =================== */
 
+@media (max-width: 900px) {
+  .movie-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .poster img {
+    width: 260px;
+  }
+
+  .details {
+    text-align: center;
+  }
+}
