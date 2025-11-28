@@ -1,55 +1,38 @@
-const TMDB_API_KEY = "9b7c3ede447b14c5e0e9d33a137ddac9";
-const BASE_URL = "https://api.themoviedb.org/3";
+const TMDB_API_KEY = "ca75115bc2b339d29d236aac176376d8";
+const BASE_URL = "https://api.themoviedb.org/3/movie";
 const IMG_URL = "https://image.tmdb.org/t/p/w300";
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Lấy ID phim từ URL
+document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
-  const movieId = params.get("id");
+  const movie_id = params.get("id");
 
-  // ============================
-  // 1. Movie Details
-  // ============================
-  // ============================
-// 1. Movie Details
-// ============================
-fetch(`${BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}`)
-  .then((res) => res.json())
-  .then((data) => {
-    // Poster
-    document.getElementById("preview-img").src = IMG_URL + data.poster_path;
+  //===== 1. Movie details =====
+  fetch(`${BASE_URL}/${movie_id}?api_key=${TMDB_API_KEY}`)
+    .then((res) => res.json())
+    .then((data) => {
+      // Ảnh phim
+      document.getElementById("preview-img").src = IMG_URL + data.poster_path;
 
-    // Tiêu đề
-    document.getElementById("movie-title").textContent = data.title;
+      // Tiêu đề phim
+      document.getElementById("movie-title").textContent = data.title;
 
-    // Ngày phát hành
-    document.getElementById("release-date").textContent =
-      "Release Date: " + data.release_date;
+      // Ngày phát hành phim
+      document.getElementById("release-date").innerHTML = `
+      Release date: ${data.release_date}`;
 
-    // Mô tả
-    document.getElementById("movie-description").textContent = data.overview;
+      // Mô tả phim
+      document.getElementById("movie-description").textContent = data.overview;
 
-    // Genres
-    const genresBox = document.getElementById("genres");
-    genresBox.innerHTML = ""; // reset
-    for (let i = 0; i < data.genres.length; i++) {
-      genresBox.innerHTML += `<span class="genre-tag">${data.genres[i].name}</span>`;
-    }
+      // Thể loại phim
+      const genres_box = document.getElementById("genres");
+      for (let i = 0; i < data.genres.length; i++) {
+        genres_box.innerHTML += `<span class="genre-tag">${data.genres[i].name}</span>`;
+      }
+    })
+    .catch((err) => console.error(err));
 
-    // Nút Watch Now
-    const watchBtn = document.getElementById("watch-now-btn");
-    watchBtn.addEventListener("click", () => {
-      window.location.href = `watch.html?id=${movieId}`;
-    });
-  })
-  .catch((err) => console.error("❌ Lỗi tải thông tin phim:", err));
-
-
-
-  // ============================
-  // 2. CASTS
-  // ============================
-  fetch(`${BASE_URL}/movie/${movieId}/credits?api_key=${TMDB_API_KEY}`)
+  //===== 2. Movie casts =====  
+  fetch(`${BASE_URL}/movie/${movie_id}/credits?api_key=${TMDB_API_KEY}`)
     .then((res) => res.json())
     .then((data) => {
       const castGrid = document.getElementById("casts-grid");
@@ -69,5 +52,5 @@ fetch(`${BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}`)
         `;
       }
     })
-    .catch((err) => console.error("❌ Lỗi tải casts:", err));
+    .catch((err) => console.error("Lỗi tải casts:", err));
 });

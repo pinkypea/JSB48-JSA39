@@ -1,0 +1,36 @@
+.search-container {
+  padding: 40px 50px;
+}
+
+#search-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.movie-card {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card h4 {
+  color: white;
+  margin-top: 10px;
+  font-size: 14px;
+}
