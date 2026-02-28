@@ -4,13 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo">MY STORE NAME</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="auth-buttons" id="auth-buttons">
+            <a href="./register/register.html" class="register-button">Register</a>
+            <a href="./login/login.html" class="login-button">Login</a>
+        </div>
+        <div class="user-infor" id="user-infor" style="display: none;">
+            <span id="username"></span>
+            <a href="./Shopping cart/cart.html" class="user-button" id="cart-button">Shopping cart</a>
+            <a href="" class="user-button" id="logout-button">Logout</a>
+        </div>
+    </nav>
+    
+    <div id="products-container"></div>
+    
     <!-- Firebase config -->
     <script src="https://www.gstatic.com/firebasejs/11.4.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore-compat.js"></script>
 
     <script src="firebase-config.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

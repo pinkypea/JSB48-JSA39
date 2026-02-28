@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2 id="form-title">Login</h2>
+        <form id="login-form">
+            <div class="input-group">
+                <input type="text" class="inp-email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <input type="password" class="inp-password" placeholder="Password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p class="text-center mt-4">
+                <span>Chưa có tài khoản?</span>
+                <a href="../register/register.html" class="ms-1">Đăng ký</a>
+            </p>
+        </form>
+    </div>
+
+    <!-- Firebase config -->
+    <script src="https://www.gstatic.com/firebasejs/11.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore-compat.js"></script>
+    
+    <script src="../firebase-config.js"></script>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
