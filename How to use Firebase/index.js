@@ -46,3 +46,7 @@ function loadProducts(){
 
 
 window.onload = loadProducts;
+
+const user_infor = document.querySelector('#user-infor');
+const username_display = document.querySelector('#username');
+const auth_btn = document.querySelector('#auth-buttons');

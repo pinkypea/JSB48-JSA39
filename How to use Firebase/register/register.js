@@ -23,11 +23,15 @@ form.addEventListener("submit", (e) => {
     .then((userCredential) => {
       // Signed in
       var user = userCredential.user;
-      // ...
+      return firebase.firestore().collection("users").doc(user.uid).set({
+        username: username,
+        email: email,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
     })
     .then(() => {
-        alert("Sign up successfully!!!");
-        window.location.href = "../index.html"
+      alert("Sign up successfully!!!");
+      window.location.href = "../index.html";
     })
     .catch((error) => {
       var errorCode = error.code;
