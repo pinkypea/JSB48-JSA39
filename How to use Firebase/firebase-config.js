@@ -9,3 +9,5 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 console.log(firebase.app().name);
+
+const db = firebase.firestore();
