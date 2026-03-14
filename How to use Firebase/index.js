@@ -1,3 +1,15 @@
+function updateProductOnCart(productId) {
+    db.collection("products").doc(productId).update({
+        "onCart": true
+    })
+    .then(() => {
+        alert("Sản phẩm đã được thêm vào giỏ hàng");
+    })
+    .catch ((error) => {
+        console.log("Lỗi không thêm được sản phẩm vào giỏ hàng", error);
+    })
+}
+
 function loadProducts(){
     const products_container = document.querySelector("#products-container");
     db.collection("products").get().then((querySnapshot) => {
@@ -31,5 +43,6 @@ function loadProducts(){
         }
 });
 }
+
 
 window.onload = loadProducts;
