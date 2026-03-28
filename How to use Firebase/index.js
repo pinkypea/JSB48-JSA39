@@ -12,6 +12,72 @@
 //     });
 // }
 
+function updateProductOnCart(productId) {
+    const user = firebase.auth().currentUser;
+
+    if (!user) {
+        alert("Vui lòng đăng nhập trước khi thêm vào giỏ hàng");
+        return;
+    }
+
+    const productRef = db.collection("products").doc(productId);
+
+    productRef.get()
+        .then((productDoc) => {
+            if (!productDoc.exists) {
+                alert("Sản phẩm không tồn tại");
+                return;
+            }
+
+            const productData = productDoc.data();
+
+            const cartItemRef = db
+                .collection("carts")
+                .doc(user.uid)
+                .collection("items")
+                .doc(productId);
+
+            cartItemRef.get()
+                .then((cartItemDoc) => {
+                    if (cartItemDoc.exists) {
+                        const currentQuantity = cartItemDoc.data().quantity || 1;
+
+                        cartItemRef.update({
+                            quantity: currentQuantity + 1,
+                            addedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        })
+                        .then(() => {
+                            alert("Sản phẩm đã được thêm vào giỏ hàng");
+                        })
+                        .catch((error) => {
+                            console.log("Lỗi khi cập nhật giỏ hàng:", error);
+                        });
+                    } else {
+                        cartItemRef.set({
+                            productId: productId,
+                            name: productData.name,
+                            price: productData.price,
+                            image: productData.image,
+                            quantity: 1,
+                            addedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        })
+                        .then(() => {
+                            alert("Sản phẩm đã được thêm vào giỏ hàng");
+                        })
+                        .catch((error) => {
+                            console.log("Lỗi khi thêm sản phẩm vào giỏ hàng:", error);
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.log("Lỗi khi kiểm tra sản phẩm trong giỏ hàng:", error);
+                });
+        })
+        .catch((error) => {
+            console.log("Lỗi khi lấy thông tin sản phẩm:", error);
+        });
+}
+
 function addToCart(productId) {
   let user = firebase.auth().currentUser;
 
